@@ -48,7 +48,7 @@ projects). Connect the MCP server with one click:
 { "mcpServers": { "vix": { "url": "https://mcp.vixsbl.com/mcp" } } }
 ```
 
-## OpenAI Codex
+## OpenAI Codex (CLI)
 
 Codex reads the same skills path: copy `skills/vix/` into
 `.agents/skills/vix/` (project) or `~/.agents/skills/vix/` (user). Then add
