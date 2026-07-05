@@ -1,6 +1,6 @@
 {
   "name": "vix",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Make, edit, and compose media with VIX — images, video, and audio through composable operations your agent chains toward the outcome you describe.",
   "author": {
     "name": "Sober Bunny Labs",
@@ -21,20 +21,24 @@
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "VIX",
-    "shortDescription": "Make, edit, and compose media — images, video, and audio.",
+    "shortDescription": "Create and edit media with AI workflows.",
     "longDescription": "VIX is a media automation studio for agents: generate, edit, transform, compose, and render images, video, and audio through operations that chain into one result. Your agent searches the catalog, plans for free, runs async, and passes each output into the next step — guided by built-in method lessons.",
     "developerName": "Sober Bunny Labs",
     "category": "Creativity",
     "capabilities": [
       "Interactive",
-      "Read",
       "Write"
     ],
     "websiteURL": "https://www.vixsbl.com",
     "privacyPolicyURL": "https://www.vixsbl.com/privacy",
     "termsOfServiceURL": "https://www.vixsbl.com/terms",
     "defaultPrompt": [
-      "Generate a product photo on a clean white background, then turn it into a 5-second reveal video."
-    ]
+      "Turn this product photo into a short reveal video",
+      "Remove the background and polish this image",
+      "Generate a storyboard, then render a short clip"
+    ],
+    "brandColor": "#2563EB",
+    "composerIcon": "./assets/composer-icon.png",
+    "logo": "./assets/logo.png"
   }
 }
