@@ -13,8 +13,18 @@ Two pieces, per harness: the **skill** (`skills/vix/SKILL.md`, the open
 [agentskills.io](https://agentskills.io) format) teaches your agent when and
 how to reach for VIX; the **MCP connection** (`https://mcp.vixsbl.com/mcp`,
 standard OAuth) gives it the tools. Harnesses that take both get the best
-result — pick your setup below. Cursor, Codex, Hermes, and OpenClaw all read
-the same `~/.agents/skills/` folder, so one copy serves all four.
+result.
+
+## Fastest install — any harness
+
+```bash
+npx skills add soberbunnylabs/vix-skills
+```
+
+[`skills`](https://skills.sh) installs the VIX skill into the skill directory
+of 70+ agents (Claude Code, Cursor, Codex, Windsurf, and everything reading
+`.agents/skills/`). Then connect the MCP server for your harness below — or
+let the skill walk your agent through the CLI instead.
 
 ## Claude Code
 
