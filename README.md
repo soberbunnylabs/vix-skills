@@ -108,7 +108,7 @@ This repository is a valid Hermes tap — install the skill directly:
 
 ```bash
 hermes skills tap add soberbunnylabs/vix-skills
-hermes skills install vix
+hermes skills install soberbunnylabs/vix-skills/vix
 ```
 
 Then add the MCP server in `~/.hermes/config.yaml`:
