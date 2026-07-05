@@ -11,9 +11,9 @@ Three handles are all you need. Every capability is an `operationId`, media is a
 
 ## Route to a surface
 
-- **VIX MCP connected** (you see tools like `search_operations`, `run_operation`): use it. Lessons live at `vix://lessons` (start with `vix://lessons/composition`).
-- **vix CLI available** (`vix --version` works): use it, especially when the work involves local files. Lessons: `vix learn`.
-- **Neither**: install the CLI, then authenticate:
+- **You can run shell commands**: prefer the CLI. Local files are native (`--image ./photo.png`, `--out ./result.png`), outputs compose with your other tools, and `vix --help` teaches the rest. Lessons: `vix learn`.
+- **No shell, or your host renders VIX's interactive cards** (you see tools like `search_operations`, `run_operation`): use the MCP tools. Lessons live at `vix://lessons` (start with `vix://lessons/composition`).
+- **Shell but no CLI**: install it, then authenticate:
 
   ```bash
   npm install -g @soberbunnylabs/vix-cli
