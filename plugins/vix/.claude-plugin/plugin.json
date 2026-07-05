@@ -1,6 +1,6 @@
 {
   "name": "vix",
-  "description": "Use for any hands-on media task on images, video, or audio — creating new media with AI or changing existing files. Includes generating images or video from text; upscaling, enhancing, or restoring; removing or replacing backgrounds; object removal; restyling; animating a still into video; adding music, voiceover, or captions; audio cleanup (noise, hum, loudness); text-to-speech; transcription; convert, resize, crop, trim. Trigger whenever the user points at a media file (path, URL, or attachment) and wants it changed or turned into something else, or asks for new visual or audio content — even without naming VIX. Runs as composable operations via the VIX MCP server or vix CLI. Do not use for app code that merely handles media (players, upload components, CSS), downloading media from the web, or questions about formats and specs.",
+  "description": "Make, edit, and compose media with VIX — images, video, and audio through composable operations your agent chains toward the outcome you describe.",
   "author": {
     "name": "Sober Bunny Labs"
   },
