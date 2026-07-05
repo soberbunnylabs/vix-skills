@@ -34,6 +34,23 @@ Settings → Connectors → **Add custom connector** → paste
 `https://mcp.vixsbl.com/mcp` → Add, then approve the OAuth consent on first
 use.
 
+To also teach Claude the method (no code needed, Pro plans and up): download
+[`skills/vix.skill`](https://github.com/soberbunnylabs/vix-skills/raw/main/skills/vix.skill),
+then in claude.ai open **Settings → Capabilities**, enable Skills, and upload
+the file.
+
+## ChatGPT (Developer Mode)
+
+On paid plans, enable **Developer Mode** in settings (Apps & Connectors), then
+add `https://mcp.vixsbl.com/mcp` as a connector and approve the OAuth consent.
+Write-tool access varies by plan; Business and Enterprise get the full tool
+set.
+
+## Grok
+
+At [grok.com/connectors](https://grok.com/connectors), add
+`https://mcp.vixsbl.com/mcp` as a custom connector.
+
 ## Cursor
 
 Cursor reads agentskills.io skills natively. Copy `skills/vix/` into
@@ -65,20 +82,24 @@ codex mcp login vix
 
 ## Hermes Agent
 
-Hermes reads agentskills.io skills from external directories. Copy
-`skills/vix/` into `~/.agents/skills/vix/`, then point Hermes at it and add
-the MCP server in `~/.hermes/config.yaml`:
+This repository is a valid Hermes tap — install the skill directly:
+
+```bash
+hermes skills tap add soberbunnylabs/vix-skills
+hermes skills install vix
+```
+
+Then add the MCP server in `~/.hermes/config.yaml`:
 
 ```yaml
-skills:
-  external_dirs:
-    - ~/.agents/skills
-
 mcp_servers:
   vix:
     url: "https://mcp.vixsbl.com/mcp"
     auth: oauth
 ```
+
+(Prefer manual management? Copy `skills/vix/` into `~/.agents/skills/vix/`
+and list that directory under `skills.external_dirs` instead.)
 
 ## OpenClaw
 
