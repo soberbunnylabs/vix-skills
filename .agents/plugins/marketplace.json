@@ -1,0 +1,20 @@
+{
+  "name": "vix",
+  "interface": {
+    "displayName": "VIX"
+  },
+  "plugins": [
+    {
+      "name": "vix",
+      "source": {
+        "source": "local",
+        "path": "./plugins/vix"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

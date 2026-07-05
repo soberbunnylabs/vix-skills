@@ -75,11 +75,23 @@ projects). Connect the MCP server with one click:
 { "mcpServers": { "vix": { "url": "https://mcp.vixsbl.com/mcp" } } }
 ```
 
-## OpenAI Codex (CLI)
+## OpenAI Codex (app, CLI, and IDE)
 
-Codex reads the same skills path: copy `skills/vix/` into
-`.agents/skills/vix/` (project) or `~/.agents/skills/vix/` (user). Then add
-the MCP server to `~/.codex/config.toml` and log in:
+This repository is also a Codex plugin marketplace — one add delivers the
+skill and the MCP server everywhere (Codex shares plugin and MCP settings
+across the app, CLI, and IDE Extension):
+
+```bash
+codex plugin marketplace add soberbunnylabs/vix-skills
+```
+
+Then install **VIX** from the Plugins section (app) or `/plugins` (CLI), and
+authenticate when prompted.
+
+Prefer manual setup? In the **Codex app**: Settings → MCP → add
+`https://mcp.vixsbl.com/mcp` (the skill installs via
+`npx skills add soberbunnylabs/vix-skills` and appears in the Skills sidebar). In the
+**CLI**: add to `~/.codex/config.toml` and log in:
 
 ```toml
 [mcp_servers.vix]
