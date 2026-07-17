@@ -5,9 +5,9 @@ images, video, and audio through composable operations it can chain toward
 the outcome you describe.
 
 Everything in this repository is plain markdown and JSON config, rendered from
-the VIX monorepo. Nothing executes at install time, and nothing here phones
-home. Read it all before installing if you like — that's the point of it being
-public.
+the VIX monorepo. No install or lifecycle scripts run. The hosted MCP is
+contacted only after you authenticate or invoke VIX. Read it all before
+installing if you like — that's the point of it being public.
 
 Two pieces, per harness: the **skill** (`skills/vix/SKILL.md`, the open
 [agentskills.io](https://agentskills.io) format) teaches your agent when and
@@ -30,13 +30,15 @@ let the skill walk your agent through the CLI instead.
 
 One plugin install delivers both the skill and the MCP connection:
 
-```
-/plugin marketplace add soberbunnylabs/vix-skills
-/plugin install vix@vix
+```bash
+claude plugin marketplace add soberbunnylabs/vix-skills
+claude plugin install vix@vix
+claude mcp login vix
 ```
 
-Authenticate when prompted, then ask for media: "generate a product photo on
-white and turn it into a 5s reveal video."
+The equivalent interactive routes are `/plugin marketplace add`, `/plugin
+install`, and `/mcp`. Then ask for media: "generate a product photo on white
+and turn it into a 5s reveal video."
 
 ## Claude.ai and Claude Desktop
 
@@ -51,10 +53,9 @@ the file.
 
 ## ChatGPT (Developer Mode)
 
-On paid plans, enable **Developer Mode** in settings (Apps & Connectors), then
-add `https://mcp.vixsbl.com/mcp` as a connector and approve the OAuth consent.
-Write-tool access varies by plan; Business and Enterprise get the full tool
-set.
+Open **Settings → Security and login** and enable **Developer mode**. Then open
+**Settings → Plugins** (or [chatgpt.com/plugins](https://chatgpt.com/plugins)),
+select **+**, enter `https://mcp.vixsbl.com/mcp`, and approve the OAuth consent.
 
 ## Grok
 
@@ -75,31 +76,35 @@ projects). Connect the MCP server with one click:
 { "mcpServers": { "vix": { "url": "https://mcp.vixsbl.com/mcp" } } }
 ```
 
-## OpenAI Codex (app, CLI, and IDE)
+## OpenAI Codex (desktop and CLI)
 
 This repository is also a Codex plugin marketplace — one add delivers the
-skill and the MCP server everywhere (Codex shares plugin and MCP settings
-across the app, CLI, and IDE Extension):
+skill and the MCP server in the ChatGPT desktop Codex surface and Codex CLI:
 
 ```bash
 codex plugin marketplace add soberbunnylabs/vix-skills
+codex plugin add vix@vix
 ```
 
-Then install **VIX** from the Plugins section (app) or `/plugins` (CLI), and
-authenticate when prompted.
+The Plugins section (app) and `/plugins` (CLI) are interactive equivalents.
+Authenticate when prompted; if needed, run `codex mcp login vix` explicitly.
 
-Prefer manual setup? In the **Codex app**: Settings → MCP → add
-`https://mcp.vixsbl.com/mcp` (the skill installs via
-`npx skills add soberbunnylabs/vix-skills` and appears in the Skills sidebar). In the
-**CLI**: add to `~/.codex/config.toml` and log in:
+Codex plugins are not currently installed by the IDE extension or mobile. For
+the IDE extension, use the shared Codex MCP config plus the directly installable
+skill. The skill's `agents/openai.yaml` also declares the hosted VIX MCP
+dependency for compatible installers:
+
+```bash
+npx skills add soberbunnylabs/vix-skills
+codex mcp add vix --url https://mcp.vixsbl.com/mcp
+codex mcp login vix
+```
+
+Prefer manual config? Add this to `~/.codex/config.toml`:
 
 ```toml
 [mcp_servers.vix]
 url = "https://mcp.vixsbl.com/mcp"
-```
-
-```bash
-codex mcp login vix
 ```
 
 ## Hermes Agent
@@ -169,6 +174,15 @@ The skill is deliberately thin: routing, terminal craft, and spend discipline.
 The living method guides ship inside the product surfaces — `vix learn` on
 the CLI, `vix://lessons/*` on the MCP server — so they update with the
 catalog instead of going stale here.
+
+## Harness evals
+
+The Claude plugin ships a first-party routing and read-only discovery suite at
+`plugins/vix/evals/`, sourced from the same eight golden prompts used by the
+cross-harness checks. `claude plugin validate --strict plugins/vix` is the
+no-cost manifest gate. The account-gated `claude plugin eval` runner is an
+explicit, budgeted maintainer action; repository builds and ordinary checks
+never launch model runs.
 
 ## Updates
 

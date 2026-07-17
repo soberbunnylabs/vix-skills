@@ -1,0 +1,12 @@
+interface:
+  display_name: "VIX"
+  short_description: "Create and edit image, video, and audio"
+  default_prompt: "Use $vix to create or transform the media I describe."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "vix"
+      description: "VIX media operations"
+      transport: "streamable_http"
+      url: "https://mcp.vixsbl.com/mcp"

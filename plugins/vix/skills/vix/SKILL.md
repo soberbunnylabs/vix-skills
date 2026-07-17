@@ -21,6 +21,8 @@ Three handles are all you need. Every capability is an `operationId`, media is a
   vix doctor --json
   ```
 
+  `vix auth login` is yours to run — do not stop and hand it to the user. It opens the account owner's browser to approve and stores a token locally; no credentials pass through you. The one real blocker is a machine with no browser (remote or headless): then ask the owner to sign in from one that has it.
+
 Handles are shared across surfaces — a `mediaFileId` created on one works on the other.
 
 ## The method, in one breath
@@ -30,6 +32,7 @@ Name the outcome precisely, then decompose backward: find the last operation tha
 ## Terminal craft
 
 - Local files are CLI-native: `--image ./photo.png` uploads, `--out ./result.png` saves, and a `@` prefix forces a path upload. Media moves directly — never base64 files through your own context.
+- Feed structured inputs from a pipe with `--inputs -`. For automation, `--jsonl` on waits and recipe runs emits submitted/waiting, progress, retry, and exactly one terminal event with JSON-only stdout.
 - Batch with the shell: loop over files and submit one run each; reuse a `mediaFileId` when several steps consume the same source.
 - Long runs: `--wait` for one-offs; `vix runs create` then `vix runs wait <executionId>` in scripts. Heavy generation legitimately takes minutes — never resubmit because a run seems slow.
 - Mix tools sensibly: VIX outputs are ordinary files and URLs. When a local transform is trivial (a crop, a container remux), your local tools may be cheaper than a run; when it needs a model or rendering, it's a VIX operation.

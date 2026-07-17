@@ -1,0 +1,24 @@
+{
+  "name": "@soberbunnylabs/vix-plugin",
+  "version": "1.0.2",
+  "description": "Make, edit, and compose media with VIX — images, video, and audio through composable operations your agent chains toward the outcome you describe.",
+  "type": "module",
+  "license": "MIT",
+  "homepage": "https://www.vixsbl.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soberbunnylabs/vix-skills.git",
+    "directory": "plugins/vix"
+  },
+  "files": [
+    ".claude-plugin/",
+    ".codex-plugin/",
+    ".mcp.json",
+    "assets/",
+    "evals/",
+    "skills/",
+    "release.json",
+    "README.md",
+    "LICENSE"
+  ]
+}

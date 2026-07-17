@@ -1,0 +1,8 @@
+{
+  "kind": "vix.agentPluginRelease",
+  "version": 1,
+  "pluginVersion": "1.0.2",
+  "package": "@soberbunnylabs/vix-plugin",
+  "mcpUrl": "https://mcp.vixsbl.com/mcp",
+  "repository": "https://github.com/soberbunnylabs/vix-skills"
+}
